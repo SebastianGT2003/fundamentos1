@@ -1,0 +1,83 @@
+
+.menu{
+
+    background-color: aqua ;
+    height: 100%;
+    width: 100%;
+
+}
+.IFondo{
+    height: 100%;
+    width: 100%;
+}
+
+
+.container1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: aquamarine;
+    min-height: max-content;
+
+    
+}
+.left{
+    background: url('../imagenes/Img_Inicio.jpg')no-repeat center;
+    display: flex;
+    place-items: center;
+    text-align: center;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    
+
+}
+.right{
+    background-color: white;
+}
+.centerform{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height:75vh;
+ 
+    
+}
+
+.left h1{
+    color: white;
+    font-size: 60px;
+}
+form h1{
+    text-align: center;
+    
+}
+.backgroudform{
+    background-color:rgb(120, 166, 190);
+    width: 40vh;
+    height: 50vh;
+    padding: 2vh;
+    border-radius: 15px;
+}
+.admin {
+    border-top-left-radius: 5px ;
+    border-bottom-left-radius: 50px ;
+    background-color:rgb(255, 4, 4);;
+    padding: 2%;
+    font-size: 3vh;
+    margin-right: 0;
+    color: white;
+    font-weight: bolder;
+    margin-top: 2%;
+    
+    
+    
+  }
+
+.botonderecha{
+    justify-content: flex-end;
+    display: flex;
+}
+  
