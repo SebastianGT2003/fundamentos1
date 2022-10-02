@@ -1,0 +1,59 @@
+
+.hola{
+    background: url('../imagenes/img_registro.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100%;
+
+}
+.contenedor_registro{
+    height: 87vh;
+    
+}
+
+.backgroudform_reg{
+    background-color:rgb(120, 166, 190);
+    width: 40%;
+    height: 100%;
+    padding: 2vh;
+    border-radius: 15px;
+    opacity: 0.9;
+}
+.centerform_reg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    padding-bottom: 2%;
+ 
+    
+}
+.Negrita{
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+.boton{
+    background-color:  #d21400;
+}
+
+.botonderechareg{
+    justify-content: flex-end;
+    display: flex;
+}
+.adminreg {
+    display: flex;
+    border-top-left-radius: 5px ;
+    border-bottom-left-radius: 50px ;
+    background-color: #d21400;
+    padding: 1%;
+    font-size: 100%;
+    margin-right: 0;
+    color: white;
+    font-weight: bolder;
+    margin-top: 2%;
+    
+    
+    
+    
+  }

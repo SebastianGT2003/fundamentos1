@@ -16,7 +16,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: aquamarine;
-    min-height: max-content;
+    padding: 0%;
+    margin: 0%;
+
 
     
 }
@@ -41,7 +43,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height:75vh;
+    height: 80vh;
+    min-height: auto;
  
     
 }
@@ -56,15 +59,15 @@ form h1{
 }
 .backgroudform{
     background-color:rgb(120, 166, 190);
-    width: 40vh;
-    height: 50vh;
-    padding: 2vh;
+    width: 50%;
+    height: 70%;
+    padding: 2%;
     border-radius: 15px;
 }
 .admin {
     border-top-left-radius: 5px ;
     border-bottom-left-radius: 50px ;
-    background-color:rgb(255, 4, 4);;
+    background-color: #d21400;
     padding: 2%;
     font-size: 3vh;
     margin-right: 0;
@@ -80,4 +83,5 @@ form h1{
     justify-content: flex-end;
     display: flex;
 }
-  
+
+

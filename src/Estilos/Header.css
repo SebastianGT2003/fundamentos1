@@ -43,10 +43,9 @@ nav {
 }
 
 .derecha {
-  display: flex;
+  display: grid;
   justify-content: right;
   align-items: center;
-  grid-column: x1 / x2;
   text-align: right;
 }
 @keyframes App-logo-spin {
@@ -63,4 +62,10 @@ p{
 }
 img{
   border-radius: 15px;
+}
+.parrafo{
+  box-sizing: border-box;
+  padding-top: 4%;
+  margin-right: 10%;
+  font-size: x-small;
 }

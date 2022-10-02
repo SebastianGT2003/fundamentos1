@@ -1,4 +1,5 @@
-import "../Estilos/Inicio.css";
+import "../Estilos/Inicio_sesion.css";
+import React from "react";
 
 function Inicio() {
   return (
@@ -9,12 +10,11 @@ function Inicio() {
         </div>
         <div className="right">
           <div className="botonderecha">
-          <button type="button " className="admin">
-            Regresar
-          </button>
-
+            <button type="button " className="admin">
+              Regresar
+            </button>
           </div>
-          
+
           <div className="centerform">
             <div className="backgroudform">
               <main class="form-signin w-100 m-auto">
