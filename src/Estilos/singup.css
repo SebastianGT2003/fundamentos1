@@ -1,26 +1,21 @@
-
-.hola{
-    background: url('../imagenes/img_registro.jpg');
+.img_fondo{
+    background: url('../imagenes/Cerrar_sesion.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-height: 100%;
+    height:170vh;
+
 
 }
-.contenedor_registro{
-    height: 100vh;
-    
-}
 
-.backgroudform_reg{
-    background-color:rgb(120, 166, 190);
+.backgroudform_cerrar{
     width: 40%;
     height: 100%;
     padding: 2vh;
     border-radius: 15px;
     opacity: 0.9;
 }
-.centerform_reg{
+.centerform_cerrar{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,23 +24,10 @@
  
     
 }
-.Negrita{
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-}
-.boton{
-    background-color:  #d21400;
-}
-
-.botonderechareg{
-    justify-content: flex-end;
-    display: flex;
-}
-.adminreg {
+.boton_cerrar {
     display: flex;
     border-top-left-radius: 5px ;
     border-bottom-left-radius: 50px ;
-    background-color: #d21400;
     padding:0%;
     font-size: 100%;
     margin-right: 0;
@@ -56,4 +38,27 @@
     
     
     
-  }
+}
+.botonderechacerrar{
+    display: grid;
+    padding-top: 1%;
+    
+}
+.botonizquierdacerrar{
+    justify-content:flex-start;
+    display: flex;
+}
+.parrafoc{
+    box-sizing: border-box;
+    padding-top: 4%;
+    margin-right: 10%;
+    font-size:xx-large;
+    text-align: center;
+    color: black;
+}
+.Titulor{
+    box-sizing: border-box;
+    text-align: center;
+    font-size:large;
+
+}
