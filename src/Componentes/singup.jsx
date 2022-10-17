@@ -10,7 +10,7 @@ function Cerrar() {
     <div className="img_fondo">
       <div className="botonderechacerrar">
         <div class="col ">
-          <Link to="/" type="button" class="btn btn-danger mr-4 position-absolute top-4 start-0">
+          <Link to="/" type="button" class="btn btn-danger mr-4 position-absolute top-4 start-0">  {/* Se redirecciona la interfaz principal */}
             Cerrar sesion
           </Link>
           <div class="col col-12 mt-3">

@@ -4,14 +4,17 @@ import Registro from "./Paginas/Registro"
 import Cerrar from "./Paginas/cerrar_sesios"
 import Principal from "./Paginas/Principal"
 
+
 import {
   BrowserRouter as Router,
   Route,
   Routes,
 } from "react-router-dom";
 
+
 function App() {
   return (
+    
     <Router>
         <Routes>
 
@@ -23,6 +26,7 @@ function App() {
             
         </Routes>
     </Router>
+    
   );
 }
 

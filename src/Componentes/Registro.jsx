@@ -1,24 +1,32 @@
 import React, { useState } from "react";
 import "../Estilos/Registro.css";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, useNavigate, } from "react-router-dom";
 import usuario from "../Modelo/Usuario";
 
 function Registro() {
-  const [nombre, setnombre] = useState("");
+  const [nombre, setnombre] = useState(""); /* Se declara el estado de esas constantes*/
   const [tipo_documento, settipo_documento] = useState("");
   const [numero_documento, setnumero_documento] = useState("");
   const [tipo_usuario, settipo_usuario] = useState("");
   const [liga, setliga] = useState("");
   const [email, setemail] = useState("");
   const [contraseña, setcontraseña] = useState("");
-  const [confir_contraseña, setconfir_contraseña] = useState("");
+  const [confir_contraseña, setconfir_contraseña] = useState("");/* Se declara el estado de esas constantes*/
 
-  const Mensaje_error = verificar(contraseña, confir_contraseña);
+  const Mensaje_error = verificar(contraseña, confir_contraseña); /* Se ejecuta la funcion verificar */
+
+  const navegador= useNavigate(); /* Se usa para cambiar de interfaz */
 
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    const Usuario = new usuario();
+    var validate= verificar(email, contraseña);  /* Funcion flecha se ejecuta cuando se trata de enviar el formulario */
+    if (validate){
+      navegador("/Inicio_sesion")
+    }
+
+
+    const Usuario = new usuario(); /* Creacion de clase usuario para captura todos los datos */
     Usuario.email = email;
     Usuario.nombre = nombre;
     Usuario.contraseña = contraseña;
@@ -35,14 +43,14 @@ function Registro() {
       <div className="hola">
         <div className="botonderechareg">
           <div className="adminreg">
-            <Link to="/" type="button" class="btn btn-danger ">
+            <Link to="/" type="button" class="btn btn-danger "> {/* Redireccion a pagina principal */}
               Regresar
             </Link>
           </div>
         </div>
         <div className="centerform_reg">
           <div className="backgroudform_reg">
-            <form class="row g-3 needs-validation" onSubmit={handleSubmit}>
+            <form class="row g-3 needs-validation" onSubmit={handleSubmit}> {/* Se ejecuta cuando se envia el formulario la funcion */}
               <div class="col-12 fw-bold">
                 <label for="nombreInput" class="form-label ">
                   Nombre completo
@@ -52,8 +60,8 @@ function Registro() {
                   class="form-control"
                   id="nombreInput"
                   placeholder="Ingrese su nombre"
-                  value={nombre}
-                  onChange={(ev) => setnombre(ev.target.value)}
+                  value={nombre}  
+                  onChange={(ev) => setnombre(ev.target.value)} /* Se captura lo que hay en el imput */
                   required
                 />
               </div>
@@ -63,7 +71,7 @@ function Registro() {
                   id="tipo_documento"
                   value={tipo_documento}
                   onChange={(ev) => {
-                    settipo_documento(ev.target.value);
+                    settipo_documento(ev.target.value);  /* Se captura lo que hay en el imput */
                   }}
                   required
                   aria-label="Tipo de documento"
@@ -83,7 +91,7 @@ function Registro() {
                   id="numero_documentoInput"
                   value={numero_documento}
                   onChange={(ev) => {
-                    setnumero_documento(ev.target.value);
+                    setnumero_documento(ev.target.value);  /* Se captura lo que hay en el imput */
                   }}
                   
                   placeholder="Ingrese su numero de documento"
@@ -96,7 +104,7 @@ function Registro() {
                   class="form-select"
                   value={tipo_usuario}
                   onChange={(ev) => {
-                    settipo_usuario(ev.target.value);
+                    settipo_usuario(ev.target.value);  /* Se captura lo que hay en el imput */
                   }}
                   aria-label="Tipo de usuario"
                   required
@@ -139,7 +147,7 @@ function Registro() {
                   id="emailImput"
                   value={email}
                   onChange={(ev) => {
-                    setemail(ev.target.value);
+                    setemail(ev.target.value);  /* Se captura lo que hay en el imput */
                   }}
                   placeholder="name@example.com"
                   required
@@ -155,7 +163,7 @@ function Registro() {
                   id="PasswordImput"
                   value={contraseña}
                   onChange={(ev) => {
-                    setcontraseña(ev.target.value);
+                    setcontraseña(ev.target.value);  /* Se captura lo que hay en el imput */
                   }}
                   placeholder="Password"
                   required
@@ -171,7 +179,7 @@ function Registro() {
                   id="confir_PasswordImput"
                   value={confir_contraseña}
                   onChange={(ev) => {
-                    setconfir_contraseña(ev.target.value);
+                    setconfir_contraseña(ev.target.value);  /* Se captura lo que hay en el imput */
                   }}
                   placeholder="Password"
                   required
@@ -203,6 +211,9 @@ const verificar = (contraseña, confir_contraseña) => {
         <div class="alert alert-danger " role="alert">
           Las contraseña no son iguales
         </div>
+        
     );
+  else
+    return (false)
 };
 export default Registro;

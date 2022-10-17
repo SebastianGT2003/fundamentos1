@@ -3,15 +3,25 @@ import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Link,
+  useNavigate,
 } from "react-router-dom";
+import sesion from "../Modelo/sesion";
+
+
 
 function Inicio() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(""); /* Se declaran los estados de las constantes */
   const [contraseña, setContraseña] = useState("");
+  const navegador= useNavigate();
 
-  const handleSubmit = (ev) => {
+
+  const handleSubmit = (ev) => { /* funcion que se ejecuta cuando se da al boton de inicio sesion */
     ev.preventDefault();
-    login(email, contraseña);
+    var validate= login(email, contraseña); /* se ejecuta funcion login si retorna true se redirecciona a sesion iniciada */
+    if (validate){
+      navegador("/sesion_iniciada") /* redirecciona a sesion iniciada */
+    }
+
   };
 
   return (
@@ -32,7 +42,7 @@ function Inicio() {
           <div className="centerform">
             <div className="backgroudform">
               <main class="form-signin w-100 m-auto">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}> {/* Cuando se va a enviar el formulario se ejecuta la funcion flecha */}
                   <h1 class="h3 mb-3 fw-normal">Iniciar sesion</h1>
                   <div class="form-floating ">
                     <input
@@ -40,7 +50,7 @@ function Inicio() {
                       class="form-control"
                       id="email"
                       value={email}
-                      onChange={(ev) => setEmail(ev.target.value)}
+                      onChange={(ev) => setEmail(ev.target.value)} /* Se captura lo que hay en el imput */
                       placeholder="name@example.com"
                       required
                     />
@@ -52,7 +62,7 @@ function Inicio() {
                       class="form-control"
                       id="contraseña"
                       value={contraseña}
-                      onChange={(ev) => setContraseña(ev.target.value)}
+                      onChange={(ev) => setContraseña(ev.target.value)} /* Se captura lo que hay en el imput */
                       placeholder="Contraseña"
                       required
                     />
@@ -89,11 +99,12 @@ function Inicio() {
   let pass = document.getElementById("contraseña")
   login(email.value,pass.value)
 }) */
-const login = (email, password) => {
+const login = (email, password) => { /* Funcion de validacion de usuario */
   if (email === "estudiante@gmail.com" && password === "hola") 
-    alert("login correcto");
+    return(true)
   else 
     alert("Login incorrecto")
+    return(false);
 
 };
 

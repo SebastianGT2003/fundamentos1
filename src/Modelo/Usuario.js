@@ -1,5 +1,5 @@
 class usuario{
-    constructor(email,nombre,tipo_doc,num_doc, tipo_usu,liga,contraseña){
+    constructor(email,nombre,tipo_doc,num_doc, tipo_usu,liga,contraseña){/* Todo lo que necesita un usuario */
 
         this.email=email;
         this.nombre=nombre
