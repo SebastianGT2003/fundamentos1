@@ -13,20 +13,21 @@ function Registro() {
   const [contraseña, setcontraseña] = useState("");
   const [confir_contraseña, setconfir_contraseña] = useState("");/* Se declara el estado de esas constantes*/
 
-  const Mensaje_error = verificar(contraseña, confir_contraseña); /* Se ejecuta la funcion verificar */
+   /* Se ejecuta la funcion verificar */
 
   const navegador= useNavigate(); /* Se usa para cambiar de interfaz */
 
+  const Usuario = new usuario();
+
+  const Mensaje_error = Usuario.verificar(contraseña, confir_contraseña);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    var validate= verificar(email, contraseña);  /* Funcion flecha se ejecuta cuando se trata de enviar el formulario */
-    if (validate){
-      navegador("/Inicio_sesion")
-    }
+    navegador("/Inicio_sesion")
 
 
-    const Usuario = new usuario(); /* Creacion de clase usuario para captura todos los datos */
+
+     /* Creacion de clase usuario para captura todos los datos */
     Usuario.email = email;
     Usuario.nombre = nombre;
     Usuario.contraseña = contraseña;
@@ -34,6 +35,8 @@ function Registro() {
     Usuario.tipo_usu = tipo_usuario;
     Usuario.liga = liga;
     Usuario.tipo_doc = tipo_documento;
+
+   /*  Usuario.registro_usuario(Usuario) */
 
     console.log(Usuario); //Usuario
   };

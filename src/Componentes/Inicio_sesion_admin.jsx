@@ -1,39 +1,36 @@
-import "../Estilos/Inicio_sesion.css";
+import "../Estilos/Inicio_sesionadmin.css";
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Link,
   useNavigate,
 } from "react-router-dom";
-import sesion from "../Modelo/sesion";
+import sesion from "../Modelo/sesion_admin";
 
 
 
-function Inicio() {
+function Inicio_admin() {
   const [email, setEmail] = useState(""); /* Se declaran los estados de las constantes */
   const [contraseña, setContraseña] = useState("");
 
-  const Inicio_sesion= new sesion(email,contraseña)
+  const inicio_sesion_adm= new sesion(email,contraseña)
 
   return (
     <main>
-      <div className="container1">
-        <div className="left">
-          <h1>¡Que gusto volverte a ver!</h1>
-        </div>
-        <div className="right">
-          <div className="botonderecha">
-            <div className="admin">
-              <Link to="/" className="btn btn-danger">
+      <div className="container1ad">
+      <div className="rightad">
+          <div className="botonderechaad">
+            <div className="adminad">
+              <Link to="/" type="button" className="btn btn-danger btn btn-danger mr-4 position-absolute top-4 start-0">
                 Regresar
               </Link>
             </div>
           </div>
 
-          <div className="centerform">
-            <div className="backgroudform">
+          <div className="centerformad">
+            <div className="backgroudformad">
               <main class="form-signin w-100 m-auto">
-                <form onSubmit={Inicio_sesion.validar_inicio_sesion}> {/* Cuando se va a enviar el formulario se ejecuta la funcion flecha */}
+                <form onSubmit={inicio_sesion_adm.validar_inicio_sesion}> {/* Cuando se va a enviar el formulario se ejecuta la funcion flecha */}
                   <h1 class="h3 mb-3 fw-normal">Iniciar sesion</h1>
                   <div class="form-floating ">
                     <input
@@ -73,6 +70,10 @@ function Inicio() {
             </div>
           </div>
         </div>
+        <div className="leftad">
+          <h1>¡Que gusto volverte a ver admin!</h1>
+        </div>
+        
       </div>
     </main>
   );
@@ -86,4 +87,4 @@ function Inicio() {
 }) */
 
 
-export default Inicio;
+export default Inicio_admin;

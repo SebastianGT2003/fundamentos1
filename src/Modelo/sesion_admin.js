@@ -5,7 +5,7 @@ import {
   } from "react-router-dom";
 
 
-class sesion{
+class sesion_admin{
     constructor(email,contraseña){  /* Lo que se necesita para iniciar sesion */
 
         this.email=email;
@@ -34,4 +34,4 @@ class sesion{
     }
     
 }
-export default sesion;
+export default sesion_admin;

@@ -64,9 +64,9 @@ function Cerrar() {
           </button>
         </div>
         <div class="col ">
-            <button type="button" class="btn btn-danger mr-4 position-absolute bottom-0 end-0">
+            <Link to="/Inicio_sesion_admin" type="button" class="btn btn-danger mr-4 position-absolute bottom-0 end-0">
             Inicio admin
-            </button>
+            </Link>
         </div>
     </div>
   );
