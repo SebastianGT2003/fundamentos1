@@ -5,15 +5,30 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
-import sesion from "../Modelo/sesion";
+import sesion from "../Backend/Modelo/sesion";
 
 
 
 function Inicio() {
-  const [email, setEmail] = useState(""); /* Se declaran los estados de las constantes */
+  const [body, setbody]= useState({username:'', password:''})
+  const [email, setEmail] = useState("");                                /* Se declaran los estados de las constantes */
   const [contraseña, setContraseña] = useState("");
 
   const Inicio_sesion= new sesion(email,contraseña)
+
+  const handleChange=(e)=>{
+    console.log(e.target.value)
+    setbody({
+      ...body,
+      [e.target.name]:e.target.value
+    })
+
+
+  }
+  const onSubmit=()=>{
+    console.log(body)
+
+  }
 
   return (
     <main>
@@ -39,9 +54,12 @@ function Inicio() {
                     <input
                       type="email"
                       class="form-control"
+                      name="username"
                       id="email"
-                      value={email}
-                      onChange={(ev) => setEmail(ev.target.value)} /* Se captura lo que hay en el imput */
+                      value={body.username}
+                      onChange={handleChange}
+                      /* value={email}
+                      onChange={(ev) => setEmail(ev.target.value)}   */                   /* Se captura lo que hay en el imput */
                       placeholder="name@example.com"
                       required
                     />
@@ -51,9 +69,12 @@ function Inicio() {
                     <input
                       type="password"
                       class="form-control"
+                      name="password"
                       id="contraseña"
-                      value={contraseña}
-                      onChange={(ev) => setContraseña(ev.target.value)} /* Se captura lo que hay en el imput */
+                      value={body.password}
+                      onChange={handleChange}
+                      /* value={contraseña}
+                      onChange={(ev) => setContraseña(ev.target.value)} */ /* Se captura lo que hay en el imput */
                       placeholder="Contraseña"
                       required
                     />
@@ -64,6 +85,7 @@ function Inicio() {
                       class="w-100 btn btn-lg btn-danger mt-3"
                       type="submit"
                       id ="boton_inicio"
+                      onClick={()=>onSubmit()}
                     >
                       Iniciar sesion
                     </button>

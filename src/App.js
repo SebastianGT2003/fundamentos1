@@ -23,18 +23,7 @@ function App() {
     
 
     
-    <Router>
-        <Routes>
-
-          <Route path="/Inicio_sesion_admin" element={<Inicio_sesion_admin/>}/>
-          <Route path="/Inicio_sesion" element={<Inicio_sesion/>}/>
-          <Route path="/Registro"element={<Registro/>}/>
-          <Route path="/sesion_iniciada"element={<Cerrar/>}/>
-          <Route path="/"element={<Principal/>}/>
-
-            
-        </Routes>
-    </Router>
+    <div>Hola</div>
     
   );
 }

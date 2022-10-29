@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../Estilos/Registro.css";
 import { BrowserRouter as Router, Link, useNavigate, } from "react-router-dom";
-import usuario from "../Modelo/Usuario";
+/* import Usuario from "../Backend/Modelo/Usuario"; */
+
+
 
 function Registro() {
   const [nombre, setnombre] = useState(""); /* Se declara el estado de esas constantes*/
@@ -16,29 +18,30 @@ function Registro() {
    /* Se ejecuta la funcion verificar */
 
   const navegador= useNavigate(); /* Se usa para cambiar de interfaz */
+ /*  const usuario = new Usuario(); */
 
-  const Usuario = new usuario();
-
-  const Mensaje_error = Usuario.verificar(contraseña, confir_contraseña);
+  const Mensaje_error = verificar(contraseña, confir_contraseña);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     navegador("/Inicio_sesion")
+    
 
 
 
      /* Creacion de clase usuario para captura todos los datos */
-    Usuario.email = email;
-    Usuario.nombre = nombre;
-    Usuario.contraseña = contraseña;
-    Usuario.num_doc = numero_documento;
-    Usuario.tipo_usu = tipo_usuario;
-    Usuario.liga = liga;
-    Usuario.tipo_doc = tipo_documento;
+    /* usuario.email = email;
+    usuario.nombre = nombre;
+    usuario.contraseña = contraseña;
+    usuario.num_doc = numero_documento;
+    usuario.tipo_usu = tipo_usuario;
+    usuario.liga = liga;
+    usuario.tipo_doc = tipo_documento;
 
-   /*  Usuario.registro_usuario(Usuario) */
+    Usuario.registro_usuario(Usuario)
 
-    console.log(Usuario); //Usuario
+    console.log(Usuario); */
+     //Usuario
   };
 
   return (
