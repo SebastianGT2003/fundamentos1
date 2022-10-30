@@ -15,6 +15,8 @@ function Registro() {
   const [contraseña, setcontraseña] = useState("");
   const [confir_contraseña, setconfir_contraseña] = useState("");/* Se declara el estado de esas constantes*/
 
+
+  const [body, setBody] = useState({ documento:"",nombre: "", tipo_documento: "",liga: "",tipo_usuario: "",correo: "",contraseña: "" });
    /* Se ejecuta la funcion verificar */
 
   const navegador= useNavigate(); /* Se usa para cambiar de interfaz */

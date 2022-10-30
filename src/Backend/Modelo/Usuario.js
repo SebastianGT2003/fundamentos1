@@ -4,9 +4,9 @@
     useNavigate,
   } from "react-router-dom"; */
 
-const conexion = require('./conexion_sql');
+/* const conexion = require('./conexion_sql'); */
 
-
+import axios from 'axios';
 
 
 class usuario{
@@ -21,7 +21,7 @@ class usuario{
         this.liga=liga
     }
 
-    MostrarAllRegistros = function(){
+/*     MostrarAllRegistros = function(){
 
         conexion.query('SELECT * from usuarios', function(error,resultados,fields){
             if(error)
@@ -73,7 +73,18 @@ class usuario{
 
             console.log('Eliminacion correcta');
         });
-    };
+    }; */
+    onDelete= async(correo) =>{
+        try {
+            const{data}= await axios.get('http://localhost:4000/eliminar_usuario', {correo:correo}) 
+            console.log(data.message)
+        } catch (error) {
+            console.log(error)
+            
+        }
+        
+    }
+    
 
 
 
