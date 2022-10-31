@@ -1,10 +1,9 @@
-/* import {
+import {
     BrowserRouter as Router,
     Link,
     useNavigate,
-  } from "react-router-dom"; */
+  } from "react-router-dom";
 
-/* const conexion = require('./conexion_sql'); */
 
 import axios from 'axios';
 
@@ -20,6 +19,35 @@ class usuario{
         this.contraseña=contraseña
         this.liga=liga
     }
+    navegador= useNavigate();
+
+    get_usuario=(body)=>{
+        return body
+    }
+    set_usuario=(body, datos)=>{
+        body.nombre= datos.nombre
+    }
+
+    Registrar = (body) => {
+        axios.post("http://localhost:4000/registroapi", body)
+          .then(({ data }) => {
+            console.log(data)
+            alert("Registro correcto");
+            this.navegador("/Inicio_sesion")
+            
+          })
+          .catch(({ response }) => {
+            console.log(response);
+            alert("El correo ya esta registrado");
+            
+    
+    
+            
+    
+          })
+        
+        
+}
 
 /*     MostrarAllRegistros = function(){
 

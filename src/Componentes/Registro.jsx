@@ -1,50 +1,37 @@
 import React, { useState } from "react";
 import "../Estilos/Registro.css";
 import { BrowserRouter as Router, Link, useNavigate, } from "react-router-dom";
-/* import Usuario from "../Backend/Modelo/Usuario"; */
-
+import Usuario from "../Backend/Modelo/Usuario";
+import axios from "axios";
 
 
 function Registro() {
-  const [nombre, setnombre] = useState(""); /* Se declara el estado de esas constantes*/
-  const [tipo_documento, settipo_documento] = useState("");
-  const [numero_documento, setnumero_documento] = useState("");
-  const [tipo_usuario, settipo_usuario] = useState("");
-  const [liga, setliga] = useState("");
-  const [email, setemail] = useState("");
-  const [contraseña, setcontraseña] = useState("");
-  const [confir_contraseña, setconfir_contraseña] = useState("");/* Se declara el estado de esas constantes*/
+
+
+  const [confir_contraseña, setconfir_contraseña] = useState("");
 
 
   const [body, setBody] = useState({ documento:"",nombre: "", tipo_documento: "",liga: "",tipo_usuario: "",correo: "",contraseña: "" });
-   /* Se ejecuta la funcion verificar */
+  
+  const usuario= new Usuario(body)
 
-  const navegador= useNavigate(); /* Se usa para cambiar de interfaz */
- /*  const usuario = new Usuario(); */
-
-  const Mensaje_error = verificar(contraseña, confir_contraseña);
-
+  const inputChange = ({ target }) => {
+    const { name, value } = target;
+    setBody({
+      ...body,
+      [name]: value,
+    });
+  };
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    navegador("/Inicio_sesion")
+    usuario.Registrar(body);
     
-
-
-
-     /* Creacion de clase usuario para captura todos los datos */
-    /* usuario.email = email;
-    usuario.nombre = nombre;
-    usuario.contraseña = contraseña;
-    usuario.num_doc = numero_documento;
-    usuario.tipo_usu = tipo_usuario;
-    usuario.liga = liga;
-    usuario.tipo_doc = tipo_documento;
-
-    Usuario.registro_usuario(Usuario)
-
-    console.log(Usuario); */
-     //Usuario
   };
+
+
+  const Mensaje_error = verificar(body, confir_contraseña);
+
+
 
   return (
     <div className="contenedor_registro">
@@ -66,10 +53,14 @@ function Registro() {
                 <input
                   type="text"
                   class="form-control"
-                  id="nombreInput"
+                  id="nombre"
                   placeholder="Ingrese su nombre"
-                  value={nombre}  
-                  onChange={(ev) => setnombre(ev.target.value)} /* Se captura lo que hay en el imput */
+                  value={body.nombre}
+                  onChange={inputChange}
+                  name="nombre"
+
+                 /*  value={nombre}  
+                  onChange={(ev) => setnombre(ev.target.value)} */                        /* Se captura lo que hay en el imput */
                   required
                 />
               </div>
@@ -77,10 +68,13 @@ function Registro() {
                 <select
                   class="form-select"
                   id="tipo_documento"
-                  value={tipo_documento}
+                  name="tipo_documento"
+                  value={body.tipo_documento}
+                  onChange={inputChange}
+                  /* value={tipo_documento}
                   onChange={(ev) => {
-                    settipo_documento(ev.target.value);  /* Se captura lo que hay en el imput */
-                  }}
+                    settipo_documento(ev.target.value);  
+                  }} */
                   required
                   aria-label="Tipo de documento"
                 >
@@ -96,11 +90,14 @@ function Registro() {
                 <input
                   type="number"
                   class="form-control"
-                  id="numero_documentoInput"
-                  value={numero_documento}
+                  id="documento"
+                  name="documento"
+                  value={body.documento}
+                  onChange={inputChange}
+                  /* value={numero_documento}
                   onChange={(ev) => {
-                    setnumero_documento(ev.target.value);  /* Se captura lo que hay en el imput */
-                  }}
+                    setnumero_documento(ev.target.value); 
+                  }} */
                   
                   placeholder="Ingrese su numero de documento"
                   required
@@ -110,10 +107,12 @@ function Registro() {
                 <select
                   id="tipo_usuario"
                   class="form-select"
-                  value={tipo_usuario}
-                  onChange={(ev) => {
-                    settipo_usuario(ev.target.value);  /* Se captura lo que hay en el imput */
-                  }}
+                  name="tipo_usuario"
+                  value={body.tipo_usuario}
+                  onChange={inputChange}
+                  /* onChange={(ev) => {
+                    settipo_usuario(ev.target.value); 
+                  }} */
                   aria-label="Tipo de usuario"
                   required
                 >
@@ -130,10 +129,13 @@ function Registro() {
                 <select
                   id="liga"
                   class="form-select "
-                  value={liga}
+                  name="liga"
+                  value={body.liga}
+                  onChange={inputChange}
+                  /* value={liga}
                   onChange={(ev) => {
                     setliga(ev.target.value);
-                  }}
+                  }} */
                   aria-label="liga"
                   required
                 >
@@ -152,11 +154,14 @@ function Registro() {
                 <input
                   type="email"
                   class="form-control"
-                  id="emailImput"
-                  value={email}
+                  id="correo"
+                  name="correo"
+                  value={body.correo}
+                  onChange={inputChange}
+                  
+                  /* value={email}
                   onChange={(ev) => {
-                    setemail(ev.target.value);  /* Se captura lo que hay en el imput */
-                  }}
+                  }} */
                   placeholder="name@example.com"
                   required
                 />
@@ -168,11 +173,14 @@ function Registro() {
                 <input
                   type="password"
                   class="form-control"
-                  id="PasswordImput"
-                  value={contraseña}
-                  onChange={(ev) => {
-                    setcontraseña(ev.target.value);  /* Se captura lo que hay en el imput */
-                  }}
+                  id="contraseña"
+                  name="contraseña"
+                  value={body.contraseña}
+                  onChange={inputChange}
+
+                  /* onChange={(ev) => {
+                    setcontraseña(ev.target.value);  
+                  }} */
                   placeholder="Password"
                   required
                 />
@@ -198,9 +206,8 @@ function Registro() {
                 <button type="submit"
                   class="w-100 btn btn-lg btn-danger mt-3"
                   disabled={Mensaje_error}
+                  /* onClick={()=>usuario.Registrar(body)} */
                   >
-                  
-                
                   Registrarme
                 </button>
               </div>
@@ -213,8 +220,8 @@ function Registro() {
 }
 
 
-const verificar = (contraseña, confir_contraseña) => {
-  if (contraseña !== confir_contraseña)
+const verificar = (body, confir_contraseña) => {
+  if (body.contraseña !== confir_contraseña)
     return (
         <div class="alert alert-danger " role="alert">
           Las contraseña no son iguales
