@@ -1,4 +1,4 @@
-import Header from "../Componentes/Header";
+import Header from "../Componentes/header_inicio_sesion";
 import Boton from "../Componentes/botonejemplo.jsx";
 
 function ejemplo() {

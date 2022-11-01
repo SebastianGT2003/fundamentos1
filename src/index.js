@@ -13,6 +13,7 @@ import Inicio_sesion_admin from "./Paginas/login_admin";
 import Ejemplo from './Paginas/ejemplo';
 import Registros from './Paginas/Registros_adm';
 import Reservas from './Paginas/Reservas';
+import Reservas_administrador from './Paginas/Reservas_administrador'
 
 
 
@@ -36,6 +37,8 @@ root.render(
         <Route path="/ejemplo" element={<Ejemplo />} />
         <Route path="/registros_adm" element={<Registros />} />
         <Route path="/reservas" element={<Reservas />} />
+        <Route path="/reservas/admin" element={<Reservas_administrador />} />
+
         <Route path="/" element={<Principal />} />
       </Routes>
     </Router>

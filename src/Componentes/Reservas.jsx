@@ -46,6 +46,7 @@ function Reserva() {
       >
         Reservar
       </button>
+      <h3>Tus reservas:</h3>
       <div
         class="modal fade"
         id="exampleModal"

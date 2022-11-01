@@ -62,7 +62,8 @@ function Usuarios_reser() {
 
   return (
     <div class="container">
-      <div class="row-4">
+      <h1>Usuarios registrados en tu pagina:</h1>
+      <div class="row-4 mt-4">
         <div class="col">
           <table class="table table-striped">
             <thead>

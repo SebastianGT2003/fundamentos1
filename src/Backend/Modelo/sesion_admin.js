@@ -21,7 +21,7 @@ class sesion_admin{
           localStorage.setItem('auth', 'yes')
           
           alert("Login correcto");
-          this.navegador("/reservas")
+          this.navegador("/registros_adm")
           
         })
         .catch(({ response }) => {
