@@ -5,15 +5,29 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
-import sesion from "../Backend/Modelo/sesion_admin";
+import sesion_admin from "../Backend/Modelo/sesion_admin";
 
 
 
 function Inicio_admin() {
-  const [email, setEmail] = useState(""); /* Se declaran los estados de las constantes */
-  const [contraseña, setContraseña] = useState("");
 
-  const inicio_sesion_adm= new sesion(email,contraseña)
+  const [body, setBody] = useState({ username: "", password: "" });
+  const sesion_administrador= new sesion_admin(body)
+
+
+  const inputChange = ({ target }) => {
+    const { name, value } = target;
+    setBody({
+      ...body,
+      [name]: value,
+    });
+  };
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    sesion_administrador.iniciar_sesion(body)
+  };
+
+ 
 
   return (
     <main>
@@ -30,15 +44,16 @@ function Inicio_admin() {
           <div className="centerformad">
             <div className="backgroudformad">
               <main class="form-signin w-100 m-auto">
-                <form onSubmit={inicio_sesion_adm.validar_inicio_sesion}> {/* Cuando se va a enviar el formulario se ejecuta la funcion flecha */}
+                <form onSubmit={handleSubmit}> {/* Cuando se va a enviar el formulario se ejecuta la funcion flecha */}
                   <h1 class="h3 mb-3 fw-normal">Iniciar sesion</h1>
                   <div class="form-floating ">
                     <input
                       type="email"
                       class="form-control"
-                      id="email"
-                      value={email}
-                      onChange={(ev) => setEmail(ev.target.value)} /* Se captura lo que hay en el imput */
+                      name="username"
+                      id="username"
+                      value={body.username}
+                      onChange={inputChange}
                       placeholder="name@example.com"
                       required
                     />
@@ -48,9 +63,10 @@ function Inicio_admin() {
                     <input
                       type="password"
                       class="form-control"
-                      id="contraseña"
-                      value={contraseña}
-                      onChange={(ev) => setContraseña(ev.target.value)} /* Se captura lo que hay en el imput */
+                      name="password"
+                      id="password"
+                      value={body.password}
+                      onChange={inputChange}
                       placeholder="Contraseña"
                       required
                     />

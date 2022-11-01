@@ -1,16 +1,23 @@
-/* import usuario from "./Usuario";
 
-class admin extends usuario{
+import {
+    BrowserRouter as Router,
+    Link,
+    useNavigate,
+  } from "react-router-dom";
 
 
-    super();
-    public admin (email,nombre,tipo_doc,num_doc, tipo_usu,liga,contraseña){
-        this.super(email,nombre,tipo_doc,num_doc, tipo_usu,liga,contraseña)
-        
+import axios from 'axios';
+
+class admin{
+    constructor(nombre,liga, tipo_usu){/* Todo lo que necesita un usuario */
+
+        this.nombre=nombre
+        this.tipo_usu=tipo_usu
+        this.liga=liga
     }
+    navegador= useNavigate();
 
     
 
-    }
 }
- */
+export default admin;

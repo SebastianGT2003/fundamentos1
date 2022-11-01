@@ -3,7 +3,7 @@ import {
     Link,
     useNavigate,
   } from "react-router-dom";
-
+import axios from "axios";
 
 class sesion_admin{
     constructor(email,contraseña){  /* Lo que se necesita para iniciar sesion */
@@ -13,25 +13,27 @@ class sesion_admin{
         
     }
     navegador= useNavigate();
-
     
+    iniciar_sesion = (body) => {
+      axios.post("http://localhost:4000/login", body)
+        .then(({ data }) => {
+          console.log(data)
+          localStorage.setItem('auth', 'yes')
+          
+          alert("Login correcto");
+          this.navegador("/reservas")
+          
+        })
+        .catch(({ response }) => {
+          console.log(response.data);
+          alert("Login incorrecto");
 
-    iniciar_sesion (email, contraseña) {
-        if (email === "estudiante@gmail.com" && contraseña === "hola") 
-            return(true)
-        else 
-            alert("Login incorrecto")
-            return(false);
-        
-      }
 
-    validar_inicio_sesion=(ev)=> { /* funcion que se ejecuta cuando se da al boton de inicio sesion */
-      ev.preventDefault();
-      var validate= this.iniciar_sesion(this.email, this.contraseña); /* se ejecuta funcion login si retorna true se redirecciona a sesion iniciada */
-      if (validate){
-        this.navegador("/sesion_iniciada") /* redirecciona a sesion iniciada */
-      }
-    }
+          
+
+        });
+      
+    };
     
 }
 export default sesion_admin;

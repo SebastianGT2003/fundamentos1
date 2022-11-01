@@ -25,6 +25,7 @@ function Registro() {
   const handleSubmit = (ev) => {
     ev.preventDefault();
     usuario.Registrar(body);
+    usuario.get_usuario(body)
     
   };
 

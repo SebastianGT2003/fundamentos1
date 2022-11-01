@@ -1,5 +1,5 @@
 import Header from "../Componentes/Header";
-import Reservas_adm from "../Componentes/usuarios_reser"
+import Reservas_adm from "../Componentes/Reservas.jsx"
 
 function Reservas() {
     return (

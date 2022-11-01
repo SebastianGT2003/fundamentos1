@@ -49,59 +49,6 @@ class usuario{
         
 }
 
-/*     MostrarAllRegistros = function(){
-
-        conexion.query('SELECT * from usuarios', function(error,resultados,fields){
-            if(error)
-            throw error;
-        
-            // Esto muestra cada resultado de la busqueda
-            resultados.forEach(result => {
-                console.log(result);
-            });
-        }) 
-    }
-
-    registrar_usuario = function (documento, nombre, tipo_documento, liga, tipo_usuario, correo, contraseña) {
-
-        //Para insertar un valor tipo texto se debe envolver en '"+NombreVariableString +"'
-        // Todas las colmnas deben ir con `` 
-        const registar = "INSERT INTO usuarios (`documento`,`nombre`,`tipo_documento`,`liga`,`tipo_usuario`,`contraseña`) VALUES (" + documento + ",'" + nombre + "','" + tipo_documento + "','" + liga + "','" + tipo_usuario + "','" + correo + "','" + contraseña + "')";
-
-        // Se recoje el error y los resultados 
-        conexion.query(registar, function (error, resultados) {
-            if (error)
-                throw error;
-
-            console.log('Insercion exitosa');
-        });
-    };
-
-    eliminar_usuario = function (correo, documento) {
-
-        const eliminar = "DELETE FROM `usuarios` WHERE correo='" + correo + "'";
-
-        conexion.query(eliminar, function (error, resultados) {
-            if (error)
-                throw error;
-
-            console.log('Eliminacion correcta');
-        });
-
-    };
-
-    ModificarEvento = function (new_name, new_password, liga, correo) {
-
-        const modificar= "UPDATE `usuarios` SET `nombre`='"+new_name+"',`liga`='"+liga+"',contraseña='"+new_password+"' WHERE= '" + correo + "'";
-
-
-        conexion.query(modificar, function (error, resultados) {
-            if (error)
-                throw error;
-
-            console.log('Eliminacion correcta');
-        });
-    }; */
     onDelete= async(correo) =>{
         try {
             const{data}= await axios.get('http://localhost:4000/eliminar_usuario', {correo:correo}) 
@@ -195,3 +142,4 @@ export default usuario;
         
 
     } */
+

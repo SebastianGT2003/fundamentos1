@@ -1,4 +1,4 @@
-import Header from "../Componentes/Header";
+import Header from "../Componentes/header_inicio_sesion";
 import Cerrar from "../Componentes/singup"
 
 function cerrar() {

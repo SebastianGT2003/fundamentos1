@@ -62,3 +62,9 @@
     font-size:large;
 
 }
+.contenedor-icono{
+    margin-top: 10%;
+    width: 25%;
+    height: 20%;
+    background-color: red;
+}
