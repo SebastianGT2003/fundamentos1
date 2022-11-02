@@ -2,19 +2,20 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import reserva from "../Backend/Modelo/Reserva";
+import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 
 function Reserva() {
   const [body, setBody] = useState({nombre: "",correo: "",tipo_usuario: "",hora: "",});
   const [userList, setUserList] = useState([]);
   const Reserva = new reserva(body);
 
-  const getReservas = async (correo) => {
+/*   const getReservas = async (correo) => {
     const { data } = await axios.post("http://localhost:4000/reservaactual", {
       correo: correo,
     });
     console.log(data);
     setUserList(data);
-  };
+  }; */
   
   const inputChange = ({ target }) => {
     const { name, value } = target;
@@ -27,7 +28,7 @@ function Reserva() {
     try {
       const { data } = await axios.post("http://localhost:4000/api/eliminar/reserva",{correo: correo,});
       console.log(data.message);
-      getReservas(body.correo);
+      /* getReservas(body.correo); */
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +37,17 @@ function Reserva() {
 
 
   return (
-    <div class="container">
+    <div>
+      <div class="col col-12 mt-3">
+        <Link
+          to="/sesion_iniciada"
+          type="button"
+          class="btn btn-danger mr-4 position-absolute top-5 end-0"
+        >
+          Regresar
+        </Link>
+        </div>
+       <div class="container">
       <h1>Aqui puede hacer sus reservas</h1>
       <button
         type="button"
@@ -154,8 +165,8 @@ function Reserva() {
                 type="submit"
                 class="btn btn-danger"
                 onClick={() => {
-                  Reserva.Registrar_reserva(body)
-                  getReservas(body.correo)
+                  Reserva.Registrar_reserva(body,body.correo,setUserList)
+                  /* Reserva.actualizar_reservas_usuarios(body.correo,setUserList) */
                 }}
               >
                 Reservar
@@ -184,7 +195,7 @@ function Reserva() {
                 <button
                   type="button"
                   className="btn btn-dark btn-sm"
-                  onClick={() => onDelete(user.correo)}
+                  onClick={() => Reserva.eliminar_reservas_usuarios(user.correo, body.correo, setUserList)}
                 >
                   <i class="bi bi-trash-fill"></i>
                 </button>
@@ -194,6 +205,9 @@ function Reserva() {
         </tbody>
       </table>
     </div>
+
+    </div>
+   
   );
 }
 

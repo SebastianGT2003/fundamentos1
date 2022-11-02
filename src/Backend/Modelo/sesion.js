@@ -37,6 +37,11 @@ class sesion{
         });
       
     };
+    cerrar_sesion=()=>{
+      return this.navegador("/Inicio_sesion")
+      
+
+    }
     
 
     

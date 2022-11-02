@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import "../Estilos/Registro.css";
-import { BrowserRouter as Router, Link, useNavigate, } from "react-router-dom";
+import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import Usuario from "../Backend/Modelo/Usuario";
 import axios from "axios";
 
-
 function Registro() {
-
-
   const [confir_contraseña, setconfir_contraseña] = useState("");
 
+  const [body, setBody] = useState({
+    documento: "",
+    nombre: "",
+    tipo_documento: "",
+    liga: "",
+    tipo_usuario: "",
+    correo: "",
+    contraseña: "",
+  });
 
-  const [body, setBody] = useState({ documento:"",nombre: "", tipo_documento: "",liga: "",tipo_usuario: "",correo: "",contraseña: "" });
-  
-  const usuario= new Usuario(body)
+  const usuario = new Usuario(body);
 
   const inputChange = ({ target }) => {
     const { name, value } = target;
@@ -25,28 +29,28 @@ function Registro() {
   const handleSubmit = (ev) => {
     ev.preventDefault();
     usuario.Registrar(body);
-    usuario.get_usuario(body)
-    
+    usuario.get_usuario(body);
   };
 
-
   const Mensaje_error = verificar(body, confir_contraseña);
-
-
 
   return (
     <div className="contenedor_registro">
       <div className="hola">
         <div className="botonderechareg">
           <div className="adminreg">
-            <Link to="/" type="button" class="btn btn-danger "> {/* Redireccion a pagina principal */}
+            <Link to="/" type="button" class="btn btn-danger ">
+              {" "}
+              {/* Redireccion a pagina principal */}
               Regresar
             </Link>
           </div>
         </div>
         <div className="centerform_reg">
           <div className="backgroudform_reg">
-            <form class="row g-3 needs-validation" onSubmit={handleSubmit}> {/* Se ejecuta cuando se envia el formulario la funcion */}
+            <form class="row g-3 needs-validation" onSubmit={handleSubmit}>
+              {" "}
+              {/* Se ejecuta cuando se envia el formulario la funcion */}
               <div class="col-12 fw-bold">
                 <label for="nombreInput" class="form-label ">
                   Nombre completo
@@ -59,9 +63,8 @@ function Registro() {
                   value={body.nombre}
                   onChange={inputChange}
                   name="nombre"
-
-                 /*  value={nombre}  
-                  onChange={(ev) => setnombre(ev.target.value)} */                        /* Se captura lo que hay en el imput */
+                  /*  value={nombre}  
+                  onChange={(ev) => setnombre(ev.target.value)} */ /* Se captura lo que hay en el imput */
                   required
                 />
               </div>
@@ -99,7 +102,7 @@ function Registro() {
                   onChange={(ev) => {
                     setnumero_documento(ev.target.value); 
                   }} */
-                  
+
                   placeholder="Ingrese su numero de documento"
                   required
                 />
@@ -159,7 +162,6 @@ function Registro() {
                   name="correo"
                   value={body.correo}
                   onChange={inputChange}
-                  
                   /* value={email}
                   onChange={(ev) => {
                   }} */
@@ -178,7 +180,6 @@ function Registro() {
                   name="contraseña"
                   value={body.contraseña}
                   onChange={inputChange}
-
                   /* onChange={(ev) => {
                     setcontraseña(ev.target.value);  
                   }} */
@@ -196,19 +197,45 @@ function Registro() {
                   id="confir_PasswordImput"
                   value={confir_contraseña}
                   onChange={(ev) => {
-                    setconfir_contraseña(ev.target.value);  /* Se captura lo que hay en el imput */
+                    setconfir_contraseña(
+                      ev.target.value
+                    ); /* Se captura lo que hay en el imput */
                   }}
                   placeholder="Password"
                   required
                 />
               </div>
               {Mensaje_error}
-              <div class="mt-3">
-                <button type="submit"
+              <div class="col-12">
+                <div class="form-check  ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="terms"
+                    required
+                  ></input>
+                  <label
+                    class="form-check-label"
+                    for="terms"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                  >
+                    <p>
+                      <a href="id_" data-bs-toggle="tooltip" title="Tooltip">
+                        Acepto el reglamento
+                      </a>
+                    </p>
+                  </label>
+                </div>
+              </div>
+              <div class="mt-0">
+                <button
+                  type="submit"
                   class="w-100 btn btn-lg btn-danger mt-3"
                   disabled={Mensaje_error}
                   /* onClick={()=>usuario.Registrar(body)} */
-                  >
+                >
                   Registrarme
                 </button>
               </div>
@@ -220,16 +247,14 @@ function Registro() {
   );
 }
 
-
 const verificar = (body, confir_contraseña) => {
   if (body.contraseña !== confir_contraseña)
     return (
-        <div class="alert alert-danger " role="alert">
-          Las contraseña no son iguales
-        </div>
-        
+      <div class="alert alert-danger " role="alert">
+        Las contraseña no son iguales
+      </div>
     );
-  else
-    return (false)
+  else return false;
 };
 export default Registro;
+

@@ -1,41 +1,34 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 
-
+import Reserva from "../Backend/Modelo/Reserva";
 
 function Reservas_administrador() {
   const [userList, setUserList] = useState([]);
-
-  const getUsers = async () => {
-    const { data } = await axios.get("http://localhost:4000/reservas_administrador");
-    console.log(data);
-    setUserList(data);
-  };
-
-
-  const onDelete = async (correo) => {
-    try {
-      const { data } = await axios.post("http://localhost:4000/api/eliminar/reserva", {
-        correo: correo,
-      });
-      console.log(data.message);
-      getUsers();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  const reserva= new Reserva("hola","holi","holo","8-10")
 
   useEffect(() => {
 
-    getUsers()
+    reserva.actualizar_reservas(setUserList)
      
       .catch(console.error);
   }, []);
 
   return (
-    <div class="container">
+    <div>
+      <div class="col col-12 mt-3">
+        <Link
+          to="/inicio_admin"
+          type="button"
+          class="btn btn-danger mr-4 position-absolute top-5 end-0"
+        >
+          Regresar
+        </Link>
+        </div>
+      
+       <div class="container">
       <h1>Reservas de todos los usuarios</h1>
       <div class="row-4 mt-4">
         <div class="col">
@@ -59,7 +52,7 @@ function Reservas_administrador() {
                     <button
                       type="button"
                       className="btn btn-dark btn-sm"
-                      onClick={() => onDelete(user.correo)}
+                      onClick={() => reserva.eliminar_reservas(user.correo,setUserList)}
                     >
                       <i class="bi bi-trash-fill"></i>
                     </button>
@@ -71,6 +64,8 @@ function Reservas_administrador() {
         </div>
       </div>
     </div>
+    </div>
+   
   );
 }
 

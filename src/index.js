@@ -10,7 +10,7 @@ import Registro from "./Paginas/Registro";
 import Cerrar from "./Paginas/cerrar_sesios";
 import Principal from "./Paginas/Principal";
 import Inicio_sesion_admin from "./Paginas/login_admin";
-import Ejemplo from './Paginas/ejemplo';
+import Inicio_admin from './Paginas/Inicio_admin';
 import Registros from './Paginas/Registros_adm';
 import Reservas from './Paginas/Reservas';
 import Reservas_administrador from './Paginas/Reservas_administrador'
@@ -34,7 +34,7 @@ root.render(
         <Route path="/Inicio_sesion" element={<Inicio_sesion />} />
         <Route path="/Registro" element={<Registro />} />
         <Route path="/sesion_iniciada" element={<Cerrar />} />
-        <Route path="/ejemplo" element={<Ejemplo />} />
+        <Route path="/inicio_admin" element={<Inicio_admin />} />
         <Route path="/registros_adm" element={<Registros />} />
         <Route path="/reservas" element={<Reservas />} />
         <Route path="/reservas/admin" element={<Reservas_administrador />} />

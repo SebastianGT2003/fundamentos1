@@ -14,14 +14,14 @@ class sesion_admin{
     }
     navegador= useNavigate();
     
-    iniciar_sesion = (body) => {
+    iniciar_sesion_admin = (body) => {
       axios.post("http://localhost:4000/login", body)
         .then(({ data }) => {
           console.log(data)
           localStorage.setItem('auth', 'yes')
           
           alert("Login correcto");
-          this.navegador("/registros_adm")
+          this.navegador("/inicio_admin")
           
         })
         .catch(({ response }) => {
@@ -34,6 +34,10 @@ class sesion_admin{
         });
       
     };
-    
+    cerrar_sesion_admin=()=>{
+      return this.navegador("/Inicio_sesion_admin")
+      
+
+    }
 }
 export default sesion_admin;

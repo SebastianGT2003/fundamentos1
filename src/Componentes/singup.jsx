@@ -4,19 +4,20 @@ import imagen from "../imagenes/Quienes somos 1.jpg"
 
 import React, { useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-
+import sesion from "../Backend/Modelo/sesion";
 function Cerrar() {
+  const Sesion= new sesion("hola","hola123")
   return (
     <div className="img_fondo">
       <div className="botonderechacerrar">
         <div class="col ">
-          <Link to="/" type="button" class="btn btn-danger mr-4 position-absolute top-4 start-0">  {/* Se redirecciona la interfaz principal */}
+          <button type="button" class="btn btn-danger mr-4 position-absolute top-4 start-0" onClick={Sesion.cerrar_sesion}>  {/* Se redirecciona la interfaz principal */}
             Cerrar sesion
-          </Link>
+          </button>
           <div class="col col-12 mt-3">
-            <button type="button" class="btn btn-danger mr-4 position-absolute top-5 end-0">
-              Horarios
-            </button>
+            <Link to="/reservas" type="button" class="btn btn-danger mr-4 position-absolute top-5 end-0">
+              Reservas
+            </Link>
           </div>
         </div>
       </div>

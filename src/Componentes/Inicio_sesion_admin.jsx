@@ -24,7 +24,7 @@ function Inicio_admin() {
   };
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    sesion_administrador.iniciar_sesion(body)
+    sesion_administrador.iniciar_sesion_admin(body)
   };
 
  

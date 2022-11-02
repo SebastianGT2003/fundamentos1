@@ -17,6 +17,9 @@ class admin{
     }
     navegador= useNavigate();
 
+
+    
+
     
 
 }
